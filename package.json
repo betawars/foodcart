@@ -1,0 +1,25 @@
+{
+  "name": "foodcart",
+  "version": "1.0.0",
+  "description": "Replica of a food ordering web app",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betawars/foodcart.git"
+  },
+  "author": "Shashank Betawar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/betawars/foodcart/issues"
+  },
+  "homepage": "https://github.com/betawars/foodcart#readme",
+  "dependencies": {
+    "parcel": "^2.14.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
