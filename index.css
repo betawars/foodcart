@@ -56,3 +56,21 @@
     width: 100%;
     height: 100px;
 }
+
+.shimmer-container{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    background-color: #f0f0f0;
+    padding: 5px;
+    width: 200px;
+    max-height: 350px;
+    min-height: 350px;
+    overflow: hidden;
+    margin-top: 60px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
