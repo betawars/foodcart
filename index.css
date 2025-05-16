@@ -74,3 +74,16 @@
     border-radius: 5px;
     border: 1px solid white;
 }
+
+.login{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.top-bar-container{
+    display: flex;
+    align-items: center;
+}
