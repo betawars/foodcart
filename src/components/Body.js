@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link, Route } from "react-router-dom";
 
 const Body = (props) => {
   const [mainList, setMainList] = useState([]);
@@ -8,18 +9,19 @@ const Body = (props) => {
   const [searchText, setSearchText] = useState("")
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
 
   const fetchData = async () => {
     const data = await fetch(
       "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
+    console.log(json)
     setMainList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setActiveList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -35,8 +37,12 @@ const Body = (props) => {
     setActiveList(mainList.filter((e) => e.info.name.toLowerCase().includes(searchText)))
   }
 
+  const cardOnClick = () => {
+    
+  }
+
   //conditional rendering
-  return activeList.length === 0 ? (
+  return !activeList ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -57,8 +63,8 @@ const Body = (props) => {
 
       <div className="res-container">
         {activeList.map((data) => (
-          <div key={data.info.id}>
-            <RestaurantCard data={data} />
+          <div key={data.info.id} onClick={cardOnClick}>
+            <Link to={"/restaurant/"+data.info.id}><RestaurantCard data={data} /></Link>
           </div>
         ))}
       </div>
