@@ -27,9 +27,15 @@
 }
 
 .res-container{
+    text-decoration: none;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.res-container-link{
+    text-decoration: none;
+    color: black;
 }
 
 .res-card{

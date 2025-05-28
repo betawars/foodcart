@@ -64,7 +64,7 @@ const Body = (props) => {
       <div className="res-container">
         {activeList.map((data) => (
           <div key={data.info.id} onClick={cardOnClick}>
-            <Link to={"/restaurant/"+data.info.id}><RestaurantCard data={data} /></Link>
+            <Link className="res-container-link" to={"/restaurant/"+data.info.id}><RestaurantCard data={data} /></Link>
           </div>
         ))}
       </div>
