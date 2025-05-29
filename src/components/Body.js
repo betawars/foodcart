@@ -18,10 +18,10 @@ const Body = (props) => {
     const json = await data.json();
     console.log(json)
     setMainList(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setActiveList(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 

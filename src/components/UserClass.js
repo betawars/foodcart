@@ -4,27 +4,29 @@ class UserClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count : 0,
+            userData:{
+                name:"",
+                bio:""
+            }
         }
     }
     //This is the class alternative for useEffect and the purpose is also the same, to make API calls
-    componentDidMount(){
-        console.log("Will be called when the whole component is loaded, including the components called in side the render()")
+    async componentDidMount(){
+        const data = await fetch("https://api.github.com/users/betawars")
+        const json = await data.json()
+
+        this.setState({
+            userData:json
+        });
     }
 
     render() {
-        const {name} = this.props;
-        const {count} = this.state;
+        
+        const {name,bio} = this.state.userData;
         return (
-            <div className="user-card">
-                <h3>Counter: {count}</h3>
-                <button onClick={()=>{
-                    this.setState({
-                        count:count+1
-                    })
-                }}>Increase</button>
-                <h2>Name {name}</h2>
-                <h2>Address</h2>
+            <div className="user-card">                
+                <h2>Name: {name}</h2>
+                <h2>Bio: {bio} </h2>
             </div>
         );
     }
