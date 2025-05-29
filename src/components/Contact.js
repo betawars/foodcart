@@ -1,7 +1,10 @@
+
+import UserClass from "./UserClass";
+
 const Contact = () => {
     return(
         <div>
-            This is foodcarts contact us page
+            <UserClass name={"user1"}/>
         </div>
     )
 }
