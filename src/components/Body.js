@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link, Route } from "react-router-dom";
+import useIsOnline from "../utils/useIsOnline";
 
 const Body = (props) => {
   const [mainList, setMainList] = useState([]);
@@ -41,6 +42,11 @@ const Body = (props) => {
     
   }
 
+  const onlineStatus = useIsOnline()
+
+  if(!onlineStatus){
+    return <h1>Looks like you are offline</h1>
+  }
   //conditional rendering
   return !activeList ? (
     <Shimmer />
