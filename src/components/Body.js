@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer";
+import Shimmer from "./shimmerUis/Shimmer";
 import { Link, Route } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 
@@ -63,7 +63,7 @@ const Body = (props) => {
             Top Rated Restaurants
           </button>
           <button className="px-2 mx-2 bg-amber-600 rounded-xl cursor-pointer" onClick={onClearFilter}>
-            Clear Filter
+            Clear
           </button>
         </div>
       </div>

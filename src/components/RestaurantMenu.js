@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import Shimmer from "./shimmerUis/Shimmer";
 import { useParams } from "react-router-dom";
 import { IMG_URL, MENU_API } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import ShimmerMenu from "./shimmerUis/ShimmerMenu";
 
 const RestaurantMenu = () => {
    const resId = useParams();
@@ -10,7 +11,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId.resId)
 
   console.log(resInfo)
-  if (!resInfo) return <Shimmer />;
+  if (!resInfo) return <ShimmerMenu />;
 
   const { name, costForTwoMessage, cuisines,cloudinaryImageId } = resInfo
     ? resInfo?.cards[2]?.card?.card?.info
@@ -45,7 +46,7 @@ const RestaurantMenu = () => {
           </div>
       </div>
   ) : (
-      <Shimmer />
+      <ShimmerMenu />
   );
 };
 

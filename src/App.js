@@ -10,8 +10,8 @@ import AboutBody from "./components/AboutBody";
 import AboutBody1 from "./components/AboutBody1";
 import AboutBody2 from "./components/AboutBody2";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Shimmer from "./components/Shimmer";
 import { lazy, Suspense } from "react";
+import Shimmer from "./components/shimmerUis/Shimmer";
 const Grocery = lazy(()=>import("./components/Grocery"));
 const Contact = lazy(()=>import("./components/Contact"));
 
