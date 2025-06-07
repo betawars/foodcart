@@ -17,7 +17,6 @@ const Body = (props) => {
       "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json)
     setMainList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -47,27 +46,29 @@ const Body = (props) => {
   if(!onlineStatus){
     return <h1>Looks like you are offline</h1>
   }
+
+
   //conditional rendering
-  return !activeList ? (
+  return activeList.length===0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="top-bar-container">
-        <div className="search">
-          <input type="text" className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
-          <button onClick={onSearchClick}>Search</button>
+      <div className="top-bar-container flex">
+        <div className="search m-4 p-4">
+          <input type="text" className="search-box border-2 rounded-xl" value={searchText} onChange={(e)=>setSearchText(e.target.value)}></input>
+          <button className="px-4 py-1.5 bg-amber-100 rounded-xl mx-4 cursor-pointer" onClick={onSearchClick}>Search</button>
         </div>
-        <div className="filter">
-          <button onClick={onFilterClick} className="filter-btn">
+        <div className="filter flex justify-center m-4 p-4 ">
+          <button className="px-2 mx-2 bg-amber-600 rounded-xl cursor-pointer" onClick={onFilterClick}>
             Top Rated Restaurants
           </button>
-          <button onClick={onClearFilter} className="filter-btn">
+          <button className="px-2 mx-2 bg-amber-600 rounded-xl cursor-pointer" onClick={onClearFilter}>
             Clear Filter
           </button>
         </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {activeList.map((data) => (
           <div key={data.info.id} onClick={cardOnClick}>
             <Link className="res-container-link" to={"/restaurant/"+data.info.id}><RestaurantCard data={data} /></Link>

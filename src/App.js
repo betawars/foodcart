@@ -11,6 +11,7 @@ import AboutBody1 from "./components/AboutBody1";
 import AboutBody2 from "./components/AboutBody2";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
+import { lazy, Suspense } from "react";
 const Grocery = lazy(()=>import("./components/Grocery"));
 const Contact = lazy(()=>import("./components/Contact"));
 
