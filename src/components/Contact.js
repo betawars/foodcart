@@ -16,7 +16,6 @@ const Contact = () => {
         const data = await rawData.json();
         setUserData(data)
     }
-    console.log(userData)
     return(
         userData?
         <div>

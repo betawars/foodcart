@@ -23,10 +23,9 @@ const RestaurantMenu = () => {
     const categories =
         resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
             (e) =>
-                (e.card?.card?.["@type"] ===
-                "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory")
+                e.card?.card?.["@type"] ===
+                "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
         );
-
 
     // <div className="flex">
     //         <div className="m-4 p-2 flex flex-col w-1/2 h-fit bg-amber-100 rounded-2xl gap-3">
@@ -49,20 +48,24 @@ const RestaurantMenu = () => {
     //         <div className="m-4 p-2 bg-amber-50 w-1/2 rounded-2xl">
     //             <img src={IMG_URL + cloudinaryImageId} />
     //         </div>
-    //     </div>    
+    //     </div>
 
     return resInfo ? (
-        <div className="text-center">
-            <h1 className="font-bold my-6 text-2xl">
-                {name}
-            </h1>
-            <p className="font-bold">
+        <div className="w-1/2 m-auto ">
+            <h1 className="font-bold my-6 text-2xl text-center">{name}</h1>
+            <p className="font-bold text-center">
                 {cuisines.join(", ")} - {costForTwoMessage}
             </p>
-            {categories.map((category)=>{
-                return <div key={category.card.card.categoryId}><RestaurantCategory data = {category.card.card}/></div>
+            {categories.map((category) => {
+                return (
+                    <div className="py-5" key={category.card.card.categoryId}>
+                        <span className="font-bold text-lg">
+                            {category.card.card.title}
+                        </span>
+                        <RestaurantCategory data={category.card.card.categories} />
+                    </div>
+                );
             })}
-
         </div>
     ) : (
         <ShimmerMenu />

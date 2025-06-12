@@ -52,10 +52,8 @@ const Body = (props) => {
         return <h1>Looks like you are offline</h1>;
     }
 
-    console.log(activeList);
-
     //conditional rendering
-    return activeList.length === 0 ? (
+    return activeList?.length === 0 ? (
         <Shimmer />
     ) : (
         <div className="body">
