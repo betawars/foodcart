@@ -89,7 +89,7 @@ const Body = (props) => {
             </div>
 
 
-            <div className="res-container flex flex-wrap">
+            <div className="justify-center flex flex-wrap gap-0">
                 {activeList.map((data) => (
                     <div className="hover:scale-105" key={data.info.id} onClick={cardOnClick}>
                         <Link

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const RestaurantCategory = (props) => {
     const [visible, setVisible] = useState({});
@@ -30,11 +32,11 @@ const RestaurantCategory = (props) => {
                         key={category.categoryId}
                         className={`bg-amber-50 my-4 p-4 mx-auto shadow-xl rounded-lg`}
                     >
-                        <div onClick={() => handleClick(category.categoryId)} className={`z-1 bg-amber-50 flex justify-between cursor-pointer ${visible[category.categoryId]?'sticky py-4 top-25':''}`}>
+                        <div onClick={() => handleClick(category.categoryId)} className={`z-1 bg-amber-50 flex justify-between cursor-pointer ${visible[category.categoryId]?'sticky py-4 top-24':''}`}>
                             <span className="font-bold text-lg">
                                 {category.title}({category.itemCards.length})
                             </span>
-                            {visible[category.categoryId]?<span>^</span>:<span>v</span>}
+                            {visible[category.categoryId]?<ArrowDropUpIcon/>:<ArrowDropDownIcon/>}
                         </div>
 
                         <div  className={`bg-white overflow-hidden transition-all duration-300 ease-in-out ${
