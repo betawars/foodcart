@@ -1,14 +1,13 @@
 import { IMG_URL } from "../utils/constants";
 
 const ItemList = (props) => {
-    console.log(props);
     return (
         <div>
             {props.data.map((item) => {
                 return (
                     <div
                         key={item.card.info.id}
-                        className="p-2 m-2 border-amber-400 border-b-1 flex justify-between align-middle"
+                        className="p-2 m-2 border-gray-100 border-b-2 h-fit flex justify-between align-middle"
                     >
                         <div className="w-9/12">
                             <div className="py-2">
@@ -25,10 +24,11 @@ const ItemList = (props) => {
                             </p>
                         </div>
 
-                        <div className="w-3/12 flex justify-end relative">
+                        <div className="w-3/12 relative">
                             <img
+
                                 alt={item.card.info.name}
-                                className="w-auto h-auto rounded-lg"
+                                className="w-30 float-right h-auto rounded-l "
                                 src={IMG_URL + item.card.info.imageId}
                             />
                             <button className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>

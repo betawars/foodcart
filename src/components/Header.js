@@ -12,7 +12,7 @@ const Header = () => {
     const status = useIsOnline();
 
     return(
-        <div className="flex justify-between bg-amber-200 shadow-lg m-1 rounded-2xl p-3">
+        <div className="z-10 flex justify-between bg-amber-200 shadow-lg m-1 rounded-2xl p-3 sticky top-1">
             <div className="">
                 <img 
                     className="w-15"
