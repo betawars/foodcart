@@ -16,6 +16,7 @@ const RestaurantCard = (props) => {
     )
 }
 
+
 export const promotedRestaurant = (RestaurantCard)=>{
     return (props)=>{
         return(
