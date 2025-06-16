@@ -14,11 +14,11 @@ const RestaurantCategory = (props) => {
         setVisible(initialVisibility);
     }, []);
 
-    console.log(visible);
 
     const handleClick = (categoryId) => {
+
         setVisible((previous) => ({
-            ...previous,
+        
             [categoryId]: !previous[categoryId],
         }));
     };
