@@ -49,6 +49,7 @@ const RestaurantMenu = () => {
     //             <img src={IMG_URL + cloudinaryImageId} />
     //         </div>
     //     </div>
+    
 
     return resInfo ? (
         <div className="w-1/2 m-auto ">
