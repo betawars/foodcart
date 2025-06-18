@@ -12,61 +12,72 @@ import AboutBody2 from "./components/AboutBody2";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/shimmerUis/Shimmer";
-const Grocery = lazy(()=>import("./components/Grocery"));
-const Contact = lazy(()=>import("./components/Contact"));
+import UserContext from "./utils/userContext";
+const Grocery = lazy(() => import("./components/Grocery"));
+const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Outlet/> 
-      <Footer />
-    </div>
-  );
+    return (
+        <UserContext.Provider value={"Name"}>
+            <div className="app">
+                <Header />
+                <Outlet />
+                <Footer />
+            </div>
+        </UserContext.Provider>
+    );
 };
 
 const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      {
-        path:"/",
-        element:<Body/>,
-      },
-      {
-        path: "/about",
-        element: <About />,
-        children:[
+    {
+        path: "/",
+        element: <AppLayout />,
+        children: [
             {
-                path:"/about",
-                element:<AboutBody/>
+                path: "/",
+                element: <Body />,
             },
             {
-                path:"/about/body1",
-                element:<AboutBody1/>
+                path: "/about",
+                element: <About />,
+                children: [
+                    {
+                        path: "/about",
+                        element: <AboutBody />,
+                    },
+                    {
+                        path: "/about/body1",
+                        element: <AboutBody1 />,
+                    },
+                    {
+                        path: "/about/body2",
+                        element: <AboutBody2 />,
+                    },
+                ],
             },
             {
-                path:"/about/body2",
-                element:<AboutBody2/>
-            }
-        ]
-      },
-      {
-        path: "/contact",
-        element: <Suspense fallback={<Shimmer/>}><Contact/></Suspense>,
-      },
-      {
-        path:"/restaurant/:resId",
-        element: <RestaurantMenu/>
-      },
-      {
-        path:"/grocery",
-        element: <Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
-      }
-    ],
-    errorElement: <Error />,
-  },
+                path: "/contact",
+                element: (
+                    <Suspense fallback={<Shimmer />}>
+                        <Contact />
+                    </Suspense>
+                ),
+            },
+            {
+                path: "/restaurant/:resId",
+                element: <RestaurantMenu />,
+            },
+            {
+                path: "/grocery",
+                element: (
+                    <Suspense fallback={<Shimmer />}>
+                        <Grocery />
+                    </Suspense>
+                ),
+            },
+        ],
+        errorElement: <Error />,
+    },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

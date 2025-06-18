@@ -1,7 +1,8 @@
-import { lazy, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import Grocery from "./Grocery";
+import UserContext from "../utils/userContext";
 
 const logoImage = new URL("../../assets/logo-main-wtext.png", import.meta.url)
     .href;
@@ -9,6 +10,13 @@ const logoImage = new URL("../../assets/logo-main-wtext.png", import.meta.url)
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const status = useIsOnline();
+    const data = useContext(UserContext)
+
+    useEffect(()=>{
+        setBtnName(data)
+    },[])
+    
+
 
     return (
         <div className="z-10 flex justify-between bg-amber-200 shadow-lg rounded-b-2xl p-3 sticky top-0">
