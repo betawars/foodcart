@@ -16,8 +16,6 @@ const Header = () => {
         setBtnName(data)
     },[])
     
-
-
     return (
         <div className="z-10 flex justify-between bg-amber-200 shadow-lg rounded-b-2xl p-3 sticky top-0">
             <div className="">
