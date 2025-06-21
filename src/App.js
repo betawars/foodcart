@@ -27,6 +27,7 @@ useEffect(()=>{
 
 const AppLayout = () => {
     return (
+        //overriding the default value by setting it in value
         <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
             <div className="app">
                 <Header />
