@@ -10,15 +10,24 @@ import AboutBody from "./components/AboutBody";
 import AboutBody1 from "./components/AboutBody1";
 import AboutBody2 from "./components/AboutBody2";
 import RestaurantMenu from "./components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Shimmer from "./components/shimmerUis/Shimmer";
 import UserContext from "./utils/userContext";
 const Grocery = lazy(() => import("./components/Grocery"));
 const Contact = lazy(() => import("./components/Contact"));
 
+const [userName, setUserName] = useState();
+
+useEffect(()=>{
+    const data = {
+        name:"Shashank"
+    }
+    setUserName(data.name)
+},[])
+
 const AppLayout = () => {
     return (
-        <UserContext.Provider value={"Name"}>
+        <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
             <div className="app">
                 <Header />
                 <Outlet />
