@@ -1,8 +1,8 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 
 const UserContext = createContext({
     loggedInUser: "Default User",
-    cartValue:0,
+    cartValue:100,
 })
 
 export default UserContext;

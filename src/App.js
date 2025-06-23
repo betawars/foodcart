@@ -16,19 +16,24 @@ import UserContext from "./utils/userContext";
 const Grocery = lazy(() => import("./components/Grocery"));
 const Contact = lazy(() => import("./components/Contact"));
 
-const [userName, setUserName] = useState();
-
-useEffect(()=>{
-    const data = {
-        name:"Shashank"
-    }
-    setUserName(data.name)
-},[])
 
 const AppLayout = () => {
+
+    const [userName, setUserName] = useState();
+    const [cartItem, setCartItems] = useState();
+
+    useEffect(() => {
+        const data = {
+            name: "Shashank",
+            items: 15
+        };
+        setUserName(data.name);
+        setCartItems(data.items);
+    }, []);
+
     return (
         //overriding the default value by setting it in value
-        <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
+        <UserContext.Provider value={{ loggedInUser: userName, cartValue: cartItem, setUserName, setCartItems }}>
             <div className="app">
                 <Header />
                 <Outlet />

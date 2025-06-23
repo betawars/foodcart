@@ -2,7 +2,6 @@ import { IMG_URL } from "../utils/constants";
 
 const ItemList = (props) => {
 
-
     return (
         <div>
             {props.data.map((item) => {
@@ -33,7 +32,7 @@ const ItemList = (props) => {
                                 className="w-30 float-right h-auto rounded-l "
                                 src={IMG_URL + item.card.info.imageId}
                             />
-                            <button onClick={onAddClick} className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>
+                            <button className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>
                         </div>
                     </div>
                 );
