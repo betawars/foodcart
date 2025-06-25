@@ -13,19 +13,19 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense, useEffect, useState } from "react";
 import Shimmer from "./components/shimmerUis/Shimmer";
 import UserContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 const Grocery = lazy(() => import("./components/Grocery"));
 const Contact = lazy(() => import("./components/Contact"));
 
-
 const AppLayout = () => {
-
     const [userName, setUserName] = useState();
     const [cartItem, setCartItems] = useState();
 
     useEffect(() => {
         const data = {
             name: "Shashank",
-            items: 15
+            items: 15,
         };
         setUserName(data.name);
         setCartItems(data.items);
@@ -33,13 +33,22 @@ const AppLayout = () => {
 
     return (
         //overriding the default value by setting it in value
-        <UserContext.Provider value={{ loggedInUser: userName, cartValue: cartItem, setUserName, setCartItems }}>
-            <div className="app">
-                <Header />
-                <Outlet />
-                <Footer />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider
+                value={{
+                    loggedInUser: userName,
+                    cartValue: cartItem,
+                    setUserName,
+                    setCartItems,
+                }}
+            >
+                <div className="app">
+                    <Header />
+                    <Outlet />
+                    <Footer />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
