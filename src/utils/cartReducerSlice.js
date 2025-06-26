@@ -1,7 +1,7 @@
-//example of react reducers
+
 
 import { createSlice } from "@reduxjs/toolkit";
-
+//example of react reducers
 const cartSlice = createSlice({
     name:"cart",
     initialState:{

@@ -20,11 +20,11 @@ const Body = (props) => {
         );
         const json = await data.json();
         setMainList(
-            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
                 ?.restaurants
         );
         setActiveList(
-            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+            json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
                 ?.restaurants
         );
     };

@@ -2,6 +2,7 @@ import { lazy, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const logoImage = new URL("../../assets/logo-main-wtext.png", import.meta.url)
     .href;
@@ -10,11 +11,11 @@ const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const status = useIsOnline();
     const {cartValue,loggedInUser} = useContext(UserContext)
-    console.log(loggedInUser)
     useEffect(()=>{
-
         setBtnName(loggedInUser)
     },[loggedInUser])
+
+    const cartItems = useSelector((store) => store.cart.item)
     
     return (
         <div className="z-10 flex justify-between bg-amber-200 shadow-lg rounded-b-2xl p-3 sticky top-0">
@@ -40,7 +41,7 @@ const Header = () => {
                         <Link to={"/grocery"}>Grocery</Link>
                     </li>
                     <li className="px-4">Cart{cartValue>0?
-                    <span className="px-1 mx-1 bg-red-500 rounded-md text-white text-center">{cartValue}</span>:""}</li>
+                    <span className="px-1 mx-1 bg-red-500 rounded-md text-white text-center">{cartItems.length}</span>:""}</li>
                     
                     <button
                         onClick={() => setBtnName("Logout")}

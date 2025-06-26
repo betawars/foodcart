@@ -1,6 +1,15 @@
+import { useDispatch } from "react-redux";
 import { IMG_URL } from "../utils/constants";
+import { addItem } from "../utils/cartReducerSlice";
 
 const ItemList = (props) => {
+
+    const dispatch = useDispatch();
+    const onHandleAddItem = (event) =>{
+        //Dispatch an action from redux store
+        console.log(event)
+        dispatch(addItem("pizza"))
+    }
 
     return (
         <div>
@@ -32,7 +41,7 @@ const ItemList = (props) => {
                                 className="w-30 float-right h-auto rounded-l "
                                 src={IMG_URL + item.card.info.imageId}
                             />
-                            <button className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>
+                            <button onClick={onHandleAddItem} className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>
                         </div>
                     </div>
                 );
