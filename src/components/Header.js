@@ -15,8 +15,9 @@ const Header = () => {
         setBtnName(loggedInUser)
     },[loggedInUser])
 
+    //used to access the values in the cart array
     const cartItems = useSelector((store) => store.cart.item)
-    
+    console.log(cartItems)
     return (
         <div className="z-10 flex justify-between bg-amber-200 shadow-lg rounded-b-2xl p-3 sticky top-0">
             <div className="">
@@ -40,9 +41,9 @@ const Header = () => {
                     <li className="px-4">
                         <Link to={"/grocery"}>Grocery</Link>
                     </li>
-                    <li className="px-4">Cart{cartValue>0?
-                    <span className="px-1 mx-1 bg-red-500 rounded-md text-white text-center">{cartItems.length}</span>:""}</li>
-                    
+                    <li className="px-4">
+                        <Link to={"/cart"}>Cart{cartValue>0?
+                    <span className="px-1 mx-1 bg-red-500 rounded-md text-white text-center">{cartItems.length}</span>:""}</Link></li>                    
                     <button
                         onClick={() => setBtnName("Logout")}
                        
