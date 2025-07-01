@@ -7,8 +7,7 @@ const ItemList = (props) => {
     const dispatch = useDispatch();
     const onHandleAddItem = (event) =>{
         //Dispatch an action from redux store
-        console.log(event)
-        dispatch(addItem("pizza"))
+        dispatch(addItem(event))
     }
 
     return (
@@ -41,7 +40,7 @@ const ItemList = (props) => {
                                 className="w-30 float-right h-auto rounded-l "
                                 src={IMG_URL + item.card.info.imageId}
                             />
-                            <button onClick={onHandleAddItem} className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2">Add+</button>
+                            <button onClick={()=>onHandleAddItem(item.card.info)} className="absolute p-1 w-fit bg-green-100 text-green-500 rounded-sm bottom-2 right-2 cursor-pointer">Add+</button>
                         </div>
                     </div>
                 );
