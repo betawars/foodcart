@@ -8,7 +8,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
     const resId = useParams();
     const resInfo = useRestaurantMenu(resId.resId);
-    console.log(resInfo)
+
     if (!resInfo) return <ShimmerMenu />;
 
     const { name, costForTwoMessage, cuisines, cloudinaryImageId } = resInfo
